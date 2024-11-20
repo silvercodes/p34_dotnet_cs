@@ -89,13 +89,12 @@
 // Реализовать сортировку целочисленного одномерного массива
 // Вихрь Мерссена
 
-Random random = new Random();
-random.Next(0, 10);
+//Random random = new Random();
+//random.Next(0, 10);
 
+//int a = 4;
+//int b = 5;
 
-
-
+//(b, a) = (a, b);
 
 #endregion
-
-

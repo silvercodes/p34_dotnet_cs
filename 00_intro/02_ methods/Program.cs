@@ -1,2 +1,29 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+//class Program
+//{
+//    static void Main()
+//    {
+
+//        // локальная функция
+//        void render()
+//        {
+
+//        }
+
+//        render();
+//    }
+
+//    // метод
+//    void Render()
+//    {
+
+//    }
+//}
+
+
+//void Render()
+//{
+//    Console.WriteLine("Render");
+//}
+
+//Render();
