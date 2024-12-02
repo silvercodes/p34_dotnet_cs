@@ -184,5 +184,165 @@
 
 #endregion
 
+#region params
+//int Sum(params int[] values)
+//{
+//    int res = 0;
+//    foreach(int val in values)
+//        res += val;
 
+//    return res;
+//}
+
+//Console.WriteLine(Sum(4, 5, 6, 7, 8));
+//Console.WriteLine(Sum());
+//int[] arr = [4, 5, 6, 7];
+//Console.WriteLine(Sum(arr));
+
+
+//int Sum(int init, params int[] values)
+//{
+//    int res = init;
+//    foreach (int val in values)
+//        res += val;
+
+//    return res;
+//}
+
+//Console.WriteLine(Sum(4, 5, 6, 7, 8));
+//Console.WriteLine(Sum(0));
+//int[] arr = [4, 5, 6, 7];
+//Console.WriteLine(Sum(0, arr));
+
+#endregion
+
+#region Local functions
+
+//void Compare(int[] a, int[] b)
+//{
+//    int s1 = Sum(a);
+//    int s2 = Sum(b);
+
+//    if (s1 > s2)
+//        Console.WriteLine("a > b");
+//    else
+//        Console.WriteLine("a < b");
+
+//    int Sum(int[] arr)
+//    {
+//        int res = 0;
+//        foreach (int val in arr)
+//            res += val;
+//        return res;
+//    }
+
+//    static void Test()
+//    {
+//        // Console.WriteLine(s1);           // ERROR
+//    }
+// }
+
+#endregion
+
+#region switch
+//int val = 45;
+//switch(val)
+//{
+//    case 1:
+//        //
+//        //
+//        break;
+//    case 3:
+//    case 4:
+//        //
+//        //
+//        break;
+//    default:
+//        goto case 3;
+//        //
+//        //
+//        break;
+//}
+
+
+//int Calc(int a, int b, int operation)
+//{
+//    switch(operation)
+//    {
+//        case 0:
+//            return a + b;
+//        case 1:
+//            return a * b;
+//        case 2:
+//            return a / b;
+//        case 3:
+//            return a - b;
+//    }
+
+//    return 0;
+//}
+
+
+//int Calc(int a, int b, int operation)
+//{
+//    int res = operation switch
+//    {
+//        0 => a + b,
+//        1 => a * b,
+//        2 => a / b,
+//        3 => a - b,
+//        _ => throw new NotImplementedException()
+//    };
+
+//    return res;
+//}
+
+
+
+//int Calc(int a, int b, int operation) => operation switch
+//{
+//    0 => a + b,
+//    1 => a * b,
+//    2 => a / b,
+//    3 => a - b,
+//    _ => throw new NotImplementedException()
+//};
+
+#endregion
+
+#region enum
+
+// Status a = 2;        // ERROR
+//Status b = Status.Fatal;
+//Console.WriteLine(b);
+//Console.WriteLine((int)b);
+
+//enum Status: byte
+//{
+//    Running = 2,
+//    Pending = 4,
+//    Finished = 8,
+//    Error = 2,
+//    Fatal = Error,
+//}
+
+
+//int Sum(int a, int b, Operation op) => op switch
+//{ 
+//    Operation.Add  => a + b,
+//    Operation.Dec  => a - b,
+//    Operation.Mul  => a * b,
+//    Operation.Div  => a / b,
+//    _ => throw new NotSupportedException(),
+//};
+
+//enum Operation
+//{
+//    Add,
+//    Dec,
+//    Mul,
+//    Div,
+//}
+
+#endregion
 

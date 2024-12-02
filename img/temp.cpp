@@ -52,14 +52,57 @@
 
 
 
+// class User
+// {
+
+// };
+
+// int main()
+// {
+//     User a{};
+//     User* b = new User{};
+
+// }
+
+
+// class User
+// {
+//     public:
+//         int id;
+
+//         User()
+//         {}
+
+//         User(const User& obj)
+//         {
+
+//         }
+
+//         void render()
+//         {
+
+//         }
+
+//         //void log() = 0;
+// };
+
+// User* a = new User();
+
+
+#include <string>
+
 class User
 {
+private:
+    int id;
+    std::string email;
+public:
+    User(int id, std::string email):
+        id{id}
+    {
+        this->email = "no_email";
+    }
 
-};
-
-int main()
-{
-    User a{};
-    User* b = new User{};
 
 }
+
