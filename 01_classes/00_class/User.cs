@@ -31,7 +31,7 @@ internal class User
 {
     public int id;
     public string email;
-    public required string username;
+    public string username;
 
     public User(int id, string email)
     {
