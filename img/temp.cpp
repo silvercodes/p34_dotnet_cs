@@ -91,18 +91,69 @@
 
 #include <string>
 
-class User
+// class User
+// {
+// private:
+//     int id;
+//     std::string email;
+// public:
+//     User(int id, std::string email):
+//         id{id}
+//     {
+//         this->email = "no_email";
+//     }
+
+
+// }
+
+
+#include <iostream>
+// class Logger
+// {
+//     protected:
+//         int level = 3;
+// };
+
+// class FileLogger: public Logger
+// {
+//     public:
+//         void test()
+//         {
+//             std::cout << this->level << '\n';
+//         }
+// };
+
+// int main()
+// {
+//     Logger* logger = new Logger{};
+//     // logger->level = 10;              // ERROR
+//     FileLogger* flogger = new FileLogger{};
+//     // flogger->test = 10;              // ERROR
+// }   
+
+
+
+class Unit
 {
 private:
-    int id;
-    std::string email;
+    int hp;
+
 public:
-    User(int id, std::string email):
-        id{id}
+    Unit(int hp):
+        hp{hp}
+    {}
+
+    int getHp()
     {
-        this->email = "no_email";
+        return hp;
     }
-
-
-}
+    void setHp(int hp)
+    {
+        this->hp = hp < 0 ? 0 : hp;
+    }
+    bool isEmpty()
+    {
+        return this->hp == 0;
+    }
+};
 

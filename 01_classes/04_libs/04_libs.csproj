@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>_04_libs</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FileCombine\FileCombine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MathLib">
+      <HintPath>C:\Users\silver\Desktop\MathLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
