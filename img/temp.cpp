@@ -136,6 +136,7 @@
 class Unit
 {
 private:
+    static const int count = 0;
     int hp;
 
 public:
@@ -156,4 +157,6 @@ public:
         return this->hp == 0;
     }
 };
+
+// int Unit::count = 0;
 
