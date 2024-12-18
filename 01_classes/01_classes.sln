@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModificatorsLib", "Modifica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_properties", "06_properties\06_properties.csproj", "{897A8978-81F3-4ADA-A498-A69DE90409DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_overloading_const_static", "07_overloading_const_static\07_overloading_const_static.csproj", "{C7BD1EDD-3B91-412A-8CCE-015398C5A089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_overloading_const_static", "07_overloading_const_static\07_overloading_const_static.csproj", "{C7BD1EDD-3B91-412A-8CCE-015398C5A089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_null", "08_null\08_null.csproj", "{54CA5F19-06F4-48F3-B934-A2C0A7A4D27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{C7BD1EDD-3B91-412A-8CCE-015398C5A089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7BD1EDD-3B91-412A-8CCE-015398C5A089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7BD1EDD-3B91-412A-8CCE-015398C5A089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CA5F19-06F4-48F3-B934-A2C0A7A4D27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CA5F19-06F4-48F3-B934-A2C0A7A4D27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CA5F19-06F4-48F3-B934-A2C0A7A4D27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CA5F19-06F4-48F3-B934-A2C0A7A4D27F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,7 +75,40 @@
 
 #endregion
 
+#region const / readonly field / readonly struct
 
+Console.WriteLine(User.DefaultRole);
+
+User a = new User();
+// a.DefaultName = "petya";     // ERROR
+Console.WriteLine(a.DefaultName);
+
+class User
+{
+    // ~~~ static (не является частью состояния объекта)
+    public const string DefaultRole = "guest";
+
+    // ~~~ является частью состояния объекта
+    public readonly string DefaultName = "no_name";         // case 1
+    public User()
+    {
+        DefaultName = "vasia";                              // case 2
+    }
+}
+
+readonly struct Shape
+{
+    public readonly int id;
+    public int Size { get; }
+    public string Title { get; init; }
+    public Shape(int size, string titile)
+    {
+        Size = size;
+        Title = titile;
+    }
+}
+
+#endregion
 
 
 

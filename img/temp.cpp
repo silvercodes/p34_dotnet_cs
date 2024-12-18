@@ -133,30 +133,53 @@
 
 
 
-class Unit
+// class Unit
+// {
+// private:
+//     static const int count = 0;
+//     int hp;
+
+// public:
+//     Unit(int hp):
+//         hp{hp}
+//     {}
+
+//     int getHp()
+//     {
+//         return hp;
+//     }
+//     void setHp(int hp)
+//     {
+//         this->hp = hp < 0 ? 0 : hp;
+//     }
+//     bool isEmpty()
+//     {
+//         return this->hp == 0;
+//     }
+// };
+
+// // int Unit::count = 0;
+
+
+// int main()
+// {
+//     int a = nullptr;
+//     int* b = nullptr;
+
+// }
+
+
+
+class ILogger
 {
-private:
-    static const int count = 0;
-    int hp;
-
-public:
-    Unit(int hp):
-        hp{hp}
-    {}
-
-    int getHp()
-    {
-        return hp;
-    }
-    void setHp(int hp)
-    {
-        this->hp = hp < 0 ? 0 : hp;
-    }
-    bool isEmpty()
-    {
-        return this->hp == 0;
-    }
+    public:
+        virtual void render() = 0;
+        virtual void execute() = 0;
 };
 
-// int Unit::count = 0;
+
+class FileLogger: public ILogger
+{
+
+};
 
