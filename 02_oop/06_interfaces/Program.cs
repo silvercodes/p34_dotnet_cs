@@ -217,7 +217,7 @@
 
 #endregion
 
-#region Examples_2
+#region Examples_2  !!!!
 
 //interface IRenderable
 //{
@@ -292,31 +292,361 @@
 
 
 
-Rect c = new Rect();
-c.Render();                             // 2
+//Rect c = new Rect();
+//c.Render();                             // 2
 
-Shape a = new Rect();
-a.Render();                             // 1
+//Shape a = new Rect();
+//a.Render();                             // 1
 
-IRenderable b = new Rect();
-b.Render();                             // 3
+//IRenderable b = new Rect();
+//b.Render();                             // 3
 
-interface IRenderable
-{
-    void Render();
-}
+//interface IRenderable
+//{
+//    void Render();
+//}
 
-class Shape: IRenderable
-{
-    public void Render() => Console.WriteLine("Render() from Shape");               // 1
-}
-class Rect: Shape, IRenderable
-{
-    public new void Render() => Console.WriteLine("Render() from Rect");            // 2
-    void IRenderable.Render() => Console.WriteLine("Explicit Render() from Rect");  // 3
-}
+//class Shape: IRenderable
+//{
+//    public void Render() => Console.WriteLine("Render() from Shape");               // 1
+//}
+//class Rect: Shape, IRenderable
+//{
+//    public new void Render() => Console.WriteLine("Render() from Rect");            // 2
+//    void IRenderable.Render() => Console.WriteLine("Explicit Render() from Rect");  // 3
+//}
 
 #endregion
+
+#region Inheritance
+
+//IWritable a = new FileManager();
+//a.Write();
+
+//IFileSaver b = new FileManager();
+//b.Write();
+//b.Save();
+
+
+//interface IWritable
+//{
+//    // public void Write();
+//    public void Write() => Console.WriteLine("Write() from IWritable");
+//}
+
+//interface IFileSaver: IWritable
+//{
+//    // public void Save();
+//    public void Save() => Console.WriteLine("Save() from IFileSaver");
+//    public new void Write() => Console.WriteLine("Write() from IFileSaver");
+//}
+
+//class FileManager : IFileSaver
+//{
+//    //public void Save()
+//    //{
+//    //    throw new NotImplementedException();
+//    //}
+
+//    //public void Write()
+//    //{
+//    //    throw new NotImplementedException();
+//    //}
+//}
+
+
+
+//IWritable a = new FileManager();
+//IFileSaver b = new FileManager();
+
+//a.Write();      // 3
+//b.Write();      // 3
+
+
+//interface IWritable
+//{
+//    public void Write() => Console.WriteLine("Write() from IWritable");             // 1
+//}
+
+//interface IFileSaver : IWritable
+//{
+//    public new void Write() => Console.WriteLine("Write() from IFileSaver");       // 2
+//}
+
+//class FileManager : IFileSaver
+//{
+//    public void Write() => Console.WriteLine("Write() from FileManager");           // 3
+//}
+
+#endregion
+
+#region Interfaces as constraints
+
+//FileManager<File> fm = new FileManager<File>();
+//fm.Process(new File("/bin/debug/log.txt"));
+
+//// FileManager<Doc> fm2 = new FileManager<Doc>();       // ERROR
+
+//interface IWritable
+//{
+//    public void Write();
+//}
+//interface ISavable
+//{
+//    string? Path { get; }
+//}
+//class File : IWritable, ISavable
+//{
+//    public string? Path { get; }
+//    public File(string? path) => Path = path;
+
+//    public void Write()
+//    {
+//        Console.WriteLine("File was written");
+//    }
+//}
+//class Doc : IWritable
+//{
+//    public void Write()
+//    {
+//        Console.WriteLine("Document was written");
+//    }
+//}
+
+//class FileManager<T>
+//    where T : IWritable, ISavable
+//{
+//    public void Process(T data)
+//    {
+//        data.Write();
+//        Console.WriteLine(data.Path);
+//    }
+//}
+
+#endregion
+
+#region Generic interfaces
+
+//User<int> a = new User<int>(101);
+//IAuth<int> b = a;
+
+//Admin c = new Admin("102");
+//IAuth<string> d = c;
+
+//Author e = new Author("103");
+//User<string> f = e;
+//IAuth<string> g = e;
+
+//interface IAuth<T>
+//{
+//    public T Id { get; }
+//}
+
+//class User<T> : IAuth<T>
+//{
+//    public T Id { get; }
+//    public User(T id) => this.Id = id;
+//}
+
+//class Admin : IAuth<string>
+//{
+//    public string Id { get; }
+//    public Admin(string id) => this.Id = id;
+//}
+
+//class Author : User<string>
+//{
+//    public Author(string id)
+//        : base(id)
+//    { }
+//}
+
+#endregion
+
+#region IComparable
+
+//List<User> users = new List<User>()
+//{
+//    new User() {Id = 101, Email = "email1@mail.com", Age = 43 },
+//    new User() {Id = 102, Email = "email2@mail.com", Age = 21 },
+//    new User() {Id = 103, Email = "email3@mail.com", Age = 32 },
+//    new User() {Id = 104, Email = "email4@mail.com", Age = 20 },
+//};
+
+//users.Sort();
+
+//foreach(User u in users)
+//    Console.WriteLine(u);
+
+//class User : IComparable
+//{
+//    public int Id { get; set; }
+//    public string? Email { get; set; }
+//    public int Age { get; set; }
+//    public int CompareTo(object? obj)
+//    {
+//        if (obj is User u)
+//        {
+//            return Age - u.Age;
+//        }
+
+//        throw new ArgumentException();
+//    }
+
+//    public override string ToString()
+//    {
+//        return $"id: {Id} email: {Email} age: {Age}";
+//    }
+//}
+
+
+//class User : IComparable<User>
+//{
+//    public int Id { get; set; }
+//    public string? Email { get; set; }
+//    public int Age { get; set; }
+//    public int CompareTo(User? obj)
+//    {
+//        if (obj is null)
+//            throw new ArgumentNullException(nameof(obj));
+
+//        return Age - obj.Age;
+//    }
+
+//    public override string ToString()
+//    {
+//        return $"id: {Id} email: {Email} age: {Age}";
+//    }
+//}
+
+
+#endregion
+
+#region IComparer
+
+//List<User> users = new List<User>()
+//{
+//    new User() {Id = 101, Email = "email1@mail.com", Age = 43 },
+//    new User() {Id = 102, Email = "email2@mail.com", Age = 21 },
+//    new User() {Id = 103, Email = "email3@mail.com", Age = 32 },
+//    new User() {Id = 104, Email = "email4@mail.com", Age = 20 },
+//};
+
+//users.Sort(new UserIdComparer());
+//foreach (User u in users)
+//    Console.WriteLine(u);
+
+//class User
+//{
+//    public int Id { get; set; }
+//    public string? Email { get; set; }
+//    public int Age { get; set; }
+
+//    public override string ToString()
+//    {
+//        return $"id: {Id} email: {Email} age: {Age}";
+//    }
+//}
+
+//class UserAgeComparer : IComparer<User>
+//{
+//    public int Compare(User? x, User? y)
+//    {
+//        if (x == null || y == null)
+//            return 0;
+
+//        return x.Age - y.Age;
+//    }
+//}
+//class UserIdComparer : IComparer<User>
+//{
+//    public int Compare(User? x, User? y)
+//    {
+//        if (x == null || y == null)
+//            return 0;
+
+//        return y.Id - x.Id;
+//    }
+//}
+
+#endregion
+
+#region ICloneable
+
+//class User : ICloneable
+//{
+//    public object Clone()
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
+
+
+// BUNS
+//MyList<int> a = new MyList<int>();
+
+//MyList<int>? b = a.Clone() as MyList<int>;
+
+//class MyList<T> : List<T>, ICloneable
+//{
+//    public object Clone()
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
+
+#endregion
+
+#region Invarinace (as it is) / Covariance (up to types, out) / Contrvariance (down to types, in)
+
+// --------------------------- Инвариантный обобщённый интерфейс ------------------------------
+
+//MySqlManager a = new MySqlManager();
+
+//IConnManager<MySqlConn> manager_0 = a;
+
+//// IConnManager<Conn> manager_1 = a;           // ERROR
+
+//class Conn
+//{
+//    public string? ConnString { get; set; }
+//    public Conn(string? connString) => ConnString = connString;
+//}
+//class MySqlConn : Conn
+//{
+//    public MySqlConn(string? connString) : base(connString)
+//    {}
+//}
+
+//interface IConnManager<T>
+//{
+//    T CreateConn(string? connString);
+//}
+
+//class MySqlManager : IConnManager<MySqlConn>
+//{
+//    public MySqlConn CreateConn(string? connString)
+//    {
+//        return new MySqlConn(connString);
+//    }
+//}
+
+
+
+// ------------------------------------- Ковариантный обобщённый интерфейс --------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+#endregion
+
 
 
 
