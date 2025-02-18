@@ -615,14 +615,13 @@
 //class MySqlConn : Conn
 //{
 //    public MySqlConn(string? connString) : base(connString)
-//    {}
+//    { }
 //}
 
 //interface IConnManager<T>
 //{
 //    T CreateConn(string? connString);
 //}
-
 //class MySqlManager : IConnManager<MySqlConn>
 //{
 //    public MySqlConn CreateConn(string? connString)
@@ -632,23 +631,191 @@
 //}
 
 
-
 // ------------------------------------- Ковариантный обобщённый интерфейс --------------------------------------
 
+//MySqlManager manager_0 = new MySqlManager();                            // invariance
+
+//IConnactionManager<MySqlConnection> manager_1 = new MySqlManager();     // invariance
+
+//IConnactionManager<Connection> manager_2 = manager_0;                   // <-- covariance !!!!
+//Connection conn = manager_2.CreateConnection("config string");
+//Console.WriteLine(conn.ConnString);
+
+
+//IConnactionManager<Connection> manager = new MySqlManager();
+//Connection conn2 = manager.CreateConnection("configs");
+//Console.WriteLine(conn2.ConnString);
+
+
+//List<IConnactionManager<Connection>> list = new List<IConnactionManager<Connection>>()
+//{
+//   new MySqlManager(),
+//   new SqlServManager()
+//};
+
+//foreach (var m in list)
+//    Console.WriteLine(m.CreateConnection("config").ConnString);
 
 
 
+//class Connection
+//{
+//    public string? ConnString { get; set; }
+//    public Connection(string? connString)
+//    {
+//        ConnString = connString;
+//    }
+//}
+//class MySqlConnection : Connection
+//{
+//    public MySqlConnection(string? connString) : base(connString)
+//    { }
+//}
+//class SqlServConnection : Connection
+//{
+//    public SqlServConnection(string? connString) : base(connString)
+//    { }
+//}
+
+
+//interface IConnactionManager<out T> // ковариантный обобщенный интерфейс (ковариантный универсальный параметр)
+//{
+//    T CreateConnection(string connString);
+//}
+//class MySqlManager : IConnactionManager<MySqlConnection>
+//{
+//    public MySqlConnection CreateConnection(string connString)
+//    {
+//        return new MySqlConnection(connString);
+//    }
+//}
+//class SqlServManager : IConnactionManager<SqlServConnection>
+//{
+//    public SqlServConnection CreateConnection(string connString)
+//    {
+//        return new SqlServConnection(connString);
+//    }
+//}
 
 
 
+// ------------------------------------- Контрвариантный обобщённый интерфейс --------------------------------------
+
+//object m0 = new MySqlManager();                                 // <-- invariance
+
+//MySqlManager m1 = new MySqlManager();                           // <-- invariance
+
+//IConnactionManager<Connection> m2 = new MySqlManager();         // <-- invariance
+
+//IConnactionManager<MySqlConnection> m3 = new MySqlManager();    // <-- contrvariance
+//m3.SetConnection(new MySqlConnection("configs"));
+
+//IConnactionManager<SqlServConnection> m4 = new SqlServManager();
+//m4.SetConnection(new SqlServConnection("sql serv config"));
 
 
 
+//class Connection
+//{
+//    public string? ConnString { get; set; }
+//    public Connection(string? connString)
+//    {
+//        ConnString = connString;
+//    }
+//}
+//class MySqlConnection : Connection
+//{
+//    public MySqlConnection(string? connString) : base(connString)
+//    { }
+//}
+//class SqlServConnection : Connection
+//{
+//    public SqlServConnection(string? connString) : base(connString)
+//    { }
+//}
 
+
+//interface IConnactionManager<in T> // контрвариантный обобщенный интерфейс (контрвариантный универсальный параметр)
+//{
+//    public void SetConnection(T conn);
+//}
+
+//class MySqlManager : IConnactionManager<Connection>
+//{
+//    public void SetConnection(Connection conn)
+//    {
+//        Console.WriteLine($"MySqlManager: {conn.ConnString}");
+//    }
+//}
+
+//class SqlServManager : IConnactionManager<Connection>
+//{
+//    public void SetConnection(Connection conn)
+//    {
+//        Console.WriteLine($"SqlServManager: {conn.ConnString}");
+//    }
+//}
+
+
+
+// ------------- совместное использовани --------
+
+
+//ILogger<A, B> a = new FileLogger();
+
+//ILogger<A, A> b = new FileLogger();
+
+//ILogger<B, A> c = new FileLogger();
+
+
+//class A
+//{
+
+//}
+//class B : A
+//{
+
+//}
+
+
+//interface ILogger<in T, out K>
+//{
+//    void Log(T val);
+//    K SendMessage(string mes);
+//}
+
+
+//class FileLogger : ILogger<A, B>
+//{
+//    public void Log(A val)
+//    {
+//        throw new NotImplementedException();
+//    }
+
+//    public B SendMessage(string mes)
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
 #endregion
 
+#region Extra
+//Manager x = new Manager();
+//IComparable<A> y = x;
+//IComparable<B> z = x;
+
+//class A
+//{}
+
+//class B: A
+//{ }
 
 
-
-
-
+//class Manager : IComparable<A>
+//{
+//    public int CompareTo(A? other)
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
+#endregion
